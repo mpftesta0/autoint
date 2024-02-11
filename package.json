@@ -1,0 +1,14 @@
+{
+  "name": "bathala",
+  "version": "0.0.1",
+  "description": "A framework for building LLM assistants on top of OpenAI's GPT Assistants API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": {
+    "name": "Miguel Testa",
+    "url": "https://github.com/mpftesta0"
+  },
+  "license": "MIT"
+}
