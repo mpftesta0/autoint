@@ -84,11 +84,11 @@ export default demoAssistant;
 ```typescript
 // tools/functions/getCurrentWeather.ts
 
-interface getCurrentWeatherArguments {
+interface getCurrentWeatherArgs {
   location: string;
 }
 
-export default function getCurrentWeather() {
+export default function getCurrentWeather(args: getCurrentWeatherArgs) {
   // Add your business logic here
   return "22C";
 }
@@ -97,11 +97,11 @@ export default function getCurrentWeather() {
 ```typescript
 // tools/functions/getNickname.ts
 
-interface getNickname {
+interface getNicknameArgs {
   location: string;
 }
 
-export default function getNickname() {
+export default function getNickname(args: getNicknameArgs) {
   // Add your business logic here
   return "LA";
 }

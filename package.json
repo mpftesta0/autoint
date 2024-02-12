@@ -10,5 +10,8 @@
     "name": "Miguel Testa",
     "url": "https://github.com/mpftesta0"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "openai": "^4.27.0"
+  }
 }
