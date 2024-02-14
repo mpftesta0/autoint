@@ -2,11 +2,13 @@
   "name": "equipable",
   "version": "0.0.2",
   "description": "A framework for building LLM assistants on top of OpenAI's GPT Assistants API",
-  "main": "index.ts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "sync": "npx tsx --env-file .env scripts/updateAssistants.ts",
-    "start": "npx tsx --env-file .env index.ts"
+    "start": "npx tsx --env-file .env index.ts",
+    "prepublish": "tsc"
   },
   "bin": {
     "equipable": "./bin/cli.sh"
@@ -21,5 +23,8 @@
     "openai": "^4.27.0",
     "socket.io": "^4.7.4"
   },
-  "type": "module"
+  "type": "module",
+  "devDependencies": {
+    "typescript": "^5.3.3"
+  }
 }

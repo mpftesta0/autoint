@@ -101,7 +101,7 @@ async function main() {
       }
     } else {
       const assistantsInFolder = await fs.readdir(assistantsFolderPath);
-      const createdAssistants = {};
+      const createdAssistants: Assistants = {};
 
       for (const assistantIdx in assistantsInFolder) {
         const assistant = assistantsInFolder[assistantIdx];
