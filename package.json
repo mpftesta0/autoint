@@ -1,12 +1,15 @@
 {
   "name": "equipable",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A framework for building LLM assistants on top of OpenAI's GPT Assistants API",
   "main": "index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "sync": "npx tsx --env-file .env scripts/updateAssistants.ts",
     "start": "npx tsx --env-file .env index.ts"
+  },
+  "bin": {
+    "equipable": "./bin/cli.sh"
   },
   "author": {
     "name": "Miguel Testa",
