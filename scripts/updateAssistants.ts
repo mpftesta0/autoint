@@ -50,13 +50,16 @@ async function readAssistantsFileToJson(filePath: string): Promise<Assistants> {
 }
 
 async function main() {
-  const equipFolderpath = path.join(__dirname, ".equip");
-  const assistantIdsFilePath = path.join(equipFolderpath, "assistants.json");
+  const equipableFolderpath = path.join(__dirname, ".equip");
+  const assistantIdsFilePath = path.join(
+    equipableFolderpath,
+    "assistants.json"
+  );
   const assistantsFolderPath = path.join(__dirname, "assistants");
 
-  const doesEquipFolderExist = await doesFolderExist(equipFolderpath);
+  const doesEquipableFolderExist = await doesFolderExist(equipableFolderpath);
 
-  if (doesEquipFolderExist) {
+  if (doesEquipableFolderExist) {
     const doesAssistantsFileExist = await doesFileExist(assistantIdsFilePath);
 
     if (doesAssistantsFileExist) {
@@ -121,7 +124,7 @@ async function main() {
       );
     }
   } else {
-    await createFolder(equipFolderpath);
+    await createFolder(equipableFolderpath);
     await main();
   }
 }

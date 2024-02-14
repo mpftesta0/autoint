@@ -1,5 +1,5 @@
 {
-  "name": "equip",
+  "name": "equipable",
   "version": "0.0.1",
   "description": "A framework for building LLM assistants on top of OpenAI's GPT Assistants API",
   "main": "index.ts",
