@@ -11,6 +11,29 @@ const connection: ConnectionOptions = {
 
 export const runningAssistants = new Queue("runningAssistants", { connection });
 
+const runToolFunction = async (
+  toolCall: OpenAI.Beta.Threads.Runs.RequiredActionFunctionToolCall
+) => {
+  const { function: func, id: toolCallId } = toolCall;
+  const { name: functionName, arguments: args } = func;
+
+  try {
+    const moduleA = await import("./tools/functions/" + functionName);
+    const returnValue = moduleA.default(args);
+    return {
+      tool_call_id: toolCallId,
+      output: JSON.stringify(returnValue),
+    };
+  } catch (err) {
+    console.log(err);
+  }
+
+  return {
+    tool_call_id: toolCallId,
+    output: "No output",
+  };
+};
+
 const processRun = async (job: Job) => {
   const { threadId, runId } = job.data;
   const run = await openai.beta.threads.runs.retrieve(threadId, runId);
@@ -26,15 +49,20 @@ const processRun = async (job: Job) => {
     run.required_action?.type === "submit_tool_outputs"
   ) {
     // Code to run tools here
-    // const toolJobPromises = run.required_action.submit_tool_outputs.tool_calls.map((tool_call) =>
-    //   runToolFunction(tool_call, job.data.patientId)
-    // );
-    // const toolOutputs = await Promise.all(toolJobPromises);
-    // await submitToolOutputs(job.data.threadId, job.data.runId, {
-    //   tool_outputs: toolOutputs,
-    // });
-    // await runAssistantQueue.add('runAssistantJob', job.data, { delay: 2000 });
-    // return null;
+    const toolJobPromises =
+      run.required_action.submit_tool_outputs.tool_calls.map((tool_call) =>
+        runToolFunction(tool_call)
+      );
+    const toolOutputs = await Promise.all(toolJobPromises);
+    await openai.beta.threads.runs.submitToolOutputs(
+      job.data.threadId,
+      job.data.runId,
+      {
+        tool_outputs: toolOutputs,
+      }
+    );
+    await runningAssistants.add("runAssistantJob", job.data, { delay: 2000 });
+    return null;
   }
 
   const messageList = await openai.beta.threads.messages.list(threadId);
