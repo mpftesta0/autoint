@@ -8,9 +8,43 @@
 - Running `Redis` server
 - OpenAI API Key
 
+### Optional (for Docker-based Redis installs)
+
+- Docker
+
 ## How to Use
 
-### Setting up
+### Installing Dependencies
+
+#### Node JS
+
+To use `equipable`, you need Node.js version 20 or higher. You can check your current Node.js version by running node -v in your terminal. If you need to install Node.js, either [download](https://nodejs.org/en/download) an installer for your operating system or [install Node.js via command line](https://nodejs.org/en/download/package-manager)
+
+#### Redis
+
+##### Option 1: Use Docker (Recommended)
+
+If you prefer Docker for managing Redis, ensure Docker is installed on your machine. If you don't have Docker, download it from the [official Docker website](https://docs.docker.com/engine/install/). After installing Docker, run the following command to pull and run the Redis image:
+
+```bash
+docker run --name equipable-redis -p 6379:6379 -d redis
+```
+
+This command downloads the latest Redis image, names the container equipable-redis, maps the default Redis port 6379 on the container to the same port on your host, and runs the container in detached mode.
+
+##### Option 2: Local Redis Installation
+
+For a local Redis installation, follow the [instructions](https://redis.io/docs/install/install-redis/) for your OS.
+
+#### OpenAI API Key
+
+Follow these steps to obtain one:
+
+1. Sign up or log in to your [OpenAI account](https://platform.openai.com).
+2. Navigate to the [API key page](https://platform.openai.com/account/api-keys) and "Create a new secret key".
+3. Optionally name your secret key.
+
+#### Setting your environment variables
 
 Copy `.env.example` to `.env` by running
 
@@ -22,7 +56,7 @@ Modify it by adding in your `OPENAI_API_KEY` and your `REDIS_URL`.
 
 ### Run the Server
 
-Run `equipable` to start the server. It will take requests through http://localhost:3000
+Run `npm run equipable start` to start the server. It will take requests through http://localhost:3000
 
 ### Customize your assistants
 
@@ -101,4 +135,4 @@ export default function getNickname(args: getNicknameArgs) {
 }
 ```
 
-3. Run `equipable sync` to upload your OpenAI Assistant.
+3. Run `npm run equipable sync` to upload your OpenAI Assistant.
