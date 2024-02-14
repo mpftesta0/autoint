@@ -1,8 +1,8 @@
 {
-  "name": "autoint",
+  "name": "equip",
   "version": "0.0.1",
   "description": "A framework for building LLM assistants on top of OpenAI's GPT Assistants API",
-  "main": "index.js",
+  "main": "index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "sync": "npx tsx --env-file .env scripts/updateAssistants.ts",

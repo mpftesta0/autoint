@@ -1,6 +1,6 @@
-# autoint
+# equip
 
-`autoint` is a `Node.js` framework for building LLM assistants on top of OpenAI's GPT Assistants API
+`equip` is a `Node.js` framework for building LLM assistants on top of OpenAI's GPT Assistants API
 
 ## Dependencies
 
@@ -22,7 +22,7 @@ Modify it by adding in your `OPENAI_API_KEY` and your `REDIS_URL`.
 
 ### Run the Server
 
-Run `autoint` to start the server. It will take requests through http://localhost:3000
+Run `equip` to start the server. It will take requests through http://localhost:3000
 
 ### Customize your assistants
 
@@ -101,4 +101,4 @@ export default function getNickname(args: getNicknameArgs) {
 }
 ```
 
-3. Run `autoint sync` to upload your OpenAI Assistant.
+3. Run `equip sync` to upload your OpenAI Assistant.
