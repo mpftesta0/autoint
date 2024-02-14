@@ -26,7 +26,7 @@ Run `autoint` to start the server. It will take requests through http://localhos
 
 ### Customize your assistants
 
-1. Define your OpenAI Assistant parameters in `assistants/`
+1. Define your OpenAI Assistant parameters in `assistants/` in a JSON file.
 
 ```json
 {
