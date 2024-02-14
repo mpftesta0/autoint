@@ -50,7 +50,7 @@ async function readAssistantsFileToJson(filePath: string): Promise<Assistants> {
 }
 
 async function main() {
-  const equipableFolderpath = path.join(__dirname, ".equip");
+  const equipableFolderpath = path.join(__dirname, ".equipable");
   const assistantIdsFilePath = path.join(
     equipableFolderpath,
     "assistants.json"
