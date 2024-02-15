@@ -139,12 +139,12 @@ export default function getNickname(args: getNicknameArgs) {
 
 ## Roadmap to 0.1.0 (Feb 2024)
 
-- [ ] Break up core components into separate exports
-- [ ] Allow the initialization an empty project with `equipable init`
-- [ ] Error handling
-- [ ] Automated testing
-- [ ] Adding REST interface via providing `express` middleware
-- [ ] Migration to monorepo structure
-- [ ] Docusaurus docs
-- [ ] Changelog generation
-- [ ] CI/CD
+- [ ] [Break up core components into separate exports](https://github.com/mpftesta0/equipable/issues/1)
+- [ ] [Allow the initialization an empty project with `equipable init`](https://github.com/mpftesta0/equipable/issues/2)
+- [ ] [Set up error handling](https://github.com/mpftesta0/equipable/issues/3)
+- [ ] [Set up automated testing](https://github.com/mpftesta0/equipable/issues/4)
+- [ ] [Adding REST interface by providing `express` middleware](https://github.com/mpftesta0/equipable/issues/5)
+- [ ] [Migration project into a monorepo structure](https://github.com/mpftesta0/equipable/issues/6)
+- [ ] [Set up Docusaurus docs](https://github.com/mpftesta0/equipable/issues/7)
+- [ ] [Set up automated changelog generation](https://github.com/mpftesta0/equipable/issues/8)
+- [ ] [Implement a CI/CD pipeline](https://github.com/mpftesta0/equipable/issues/9)
