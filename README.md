@@ -136,3 +136,15 @@ export default function getNickname(args: getNicknameArgs) {
 ```
 
 3. Run `npm run equipable sync` to upload your OpenAI Assistant.
+
+## Roadmap to 0.1.0 (Feb 2024)
+
+- [ ] Break up core components into separate exports
+- [ ] Allow the initialization an empty project with `equipable init`
+- [ ] Error handling
+- [ ] Automated testing
+- [ ] Adding REST interface via providing `express` middleware
+- [ ] Migration to monorepo structure
+- [ ] Docusaurus docs
+- [ ] Changelog generation
+- [ ] CI/CD
