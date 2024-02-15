@@ -19,7 +19,7 @@ const runToolFunction = async (
 
   try {
     const moduleA = await import("./tools/functions/" + functionName);
-    const returnValue = moduleA.default(args);
+    const returnValue = await moduleA.default(args);
     return {
       tool_call_id: toolCallId,
       output: JSON.stringify(returnValue),
