@@ -52,7 +52,7 @@ Copy `.env.example` to `.env` by running
 cp .env.example .env
 ```
 
-Modify it by adding in your `OPENAI_API_KEY` and your `REDIS_URL`.
+Modify it by adding in your `OPENAI_API_KEY`, `REDIS_HOST` and `REDIS_PORT`.
 
 ### Run the Server
 
