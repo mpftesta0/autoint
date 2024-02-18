@@ -1,7 +1,6 @@
 import OpenAI from "openai";
 import { Queue, Worker, Job, ConnectionOptions } from "bullmq";
-
-const openai = new OpenAI();
+import openaiClient from "../config/openaiClient";
 
 const connection: ConnectionOptions = {
   host: "127.0.0.1",
@@ -37,7 +36,7 @@ const runToolFunction = async (
 
 const processRun = async (job: Job) => {
   const { threadId, runId } = job.data;
-  const run = await openai.beta.threads.runs.retrieve(threadId, runId);
+  const run = await openaiClient.beta.threads.runs.retrieve(threadId, runId);
   console.log("Run status:", run.status);
 
   if (run.status === "in_progress" || run.status === "queued") {
@@ -55,7 +54,7 @@ const processRun = async (job: Job) => {
         runToolFunction(tool_call)
       );
     const toolOutputs = await Promise.all(toolJobPromises);
-    await openai.beta.threads.runs.submitToolOutputs(
+    await openaiClient.beta.threads.runs.submitToolOutputs(
       job.data.threadId,
       job.data.runId,
       {
@@ -66,7 +65,7 @@ const processRun = async (job: Job) => {
     return null;
   }
 
-  const messageList = await openai.beta.threads.messages.list(threadId);
+  const messageList = await openaiClient.beta.threads.messages.list(threadId);
   const lastMessage = messageList.data
     .filter(
       (threadMessage) =>

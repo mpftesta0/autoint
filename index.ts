@@ -1,14 +1,13 @@
 import OpenAI from "openai";
 import { Server } from "socket.io";
 import { runningAssistants, runAssistantWorker } from "./queue";
-
-const openai = new OpenAI();
+import openaiClient from "./config/openaiClient";
 
 export async function createOrRetrieveThread(threadId?: string) {
   if (threadId) {
-    return openai.beta.threads.retrieve(threadId);
+    return openaiClient.beta.threads.retrieve(threadId);
   }
-  return openai.beta.threads.create();
+  return openaiClient.beta.threads.create();
 }
 
 const io = new Server(3000);
@@ -21,11 +20,11 @@ io.on("connection", (socket) => {
     console.log(`Message received: ${text}`);
     const thread = await createOrRetrieveThread(threadId);
 
-    await openai.beta.threads.messages.create(thread.id, {
+    await openaiClient.beta.threads.messages.create(thread.id, {
       role: "user",
       content: text,
     });
-    const run = await openai.beta.threads.runs.create(thread.id, {
+    const run = await openaiClient.beta.threads.runs.create(thread.id, {
       assistant_id: assistantId,
     });
 
