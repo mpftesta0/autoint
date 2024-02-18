@@ -1,13 +1,11 @@
 import OpenAI from "openai";
 import { Queue, Worker, Job, ConnectionOptions } from "bullmq";
 import openaiClient from "../config/openaiClient";
+import redisConnection from "../config/redisConnection";
 
-const connection: ConnectionOptions = {
-  host: "127.0.0.1",
-  port: 6379,
-};
-
-export const runningAssistants = new Queue("runningAssistants", { connection });
+export const runningAssistants = new Queue("runningAssistants", {
+  connection: redisConnection,
+});
 
 const runToolFunction = async (
   toolCall: OpenAI.Beta.Threads.Runs.RequiredActionFunctionToolCall
@@ -82,6 +80,6 @@ export const runAssistantWorker = new Worker(
   "runningAssistants",
   async (job) => processRun(job),
   {
-    connection,
+    connection: redisConnection,
   }
 );
