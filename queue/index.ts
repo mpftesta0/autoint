@@ -1,5 +1,5 @@
 import OpenAI from "openai";
-import { Queue, Worker, Job, ConnectionOptions } from "bullmq";
+import { Queue, Worker, Job } from "bullmq";
 import openaiClient from "../config/openaiClient";
 import redisConnection from "../config/redisConnection";
 
